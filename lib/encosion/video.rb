@@ -18,7 +18,7 @@ module Encosion
                   :file)
       attr_reader(:id, 
                   :account_id, 
-                  :flv_url,
+                  :flvurl,
                   :creation_date, 
                   :published_date, 
                   :last_modified_date, 
@@ -201,7 +201,8 @@ module Encosion
                     :length => obj['length'].to_i,
                     :economics => obj['economics'] ? ENUMS[:economics].find { |key,value| value == obj['economics'] }.first : nil,
                     :plays_total => obj['playsTotal'].to_i,
-                    :plays_trailing_week => obj['playsTrailingWeek'].to_i } unless obj.nil?
+                    :plays_trailing_week => obj['playsTrailingWeek'].to_i, 
+                    :flvurl => obj['FLVURL'] ? obj['FLVURL'] : nil } unless obj.nil?
             return self.new(args)
           else
             return nil
@@ -232,6 +233,7 @@ module Encosion
       @plays_total = args[:plays_total]
       @plays_trailing_week = args[:plays_trailing_week]
       @file = args[:file]
+      @flvurl = args[:flvurl]
     end
     
     
@@ -274,7 +276,8 @@ module Encosion
         :length => @length,
         :economics => @economics,
         :plays_total => @plays_total,
-        :plays_trailing_week => @plays_trailing_week }.to_json
+        :plays_trailing_week => @plays_trailing_week,
+        :flvurl => @flvurl }.to_json
     end
     
     
