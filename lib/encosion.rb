@@ -14,7 +14,7 @@ require 'yaml'
 require 'encosion/base'
 require 'encosion/video'
 require 'encosion/playlist'
-require 'encosion/exceptions'
+#require 'encosion/exceptions'
 
 module Encosion
   
