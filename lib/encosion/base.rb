@@ -100,7 +100,6 @@ module Encosion
       def error_check(header,body)
         if header.status_code == 200
           return true if body.nil?
-          puts body['error']
           if body.has_key?('error') && !body['error'].nil?
             message = "Brightcove responded with an error: #{body['error']} (code #{body['code']})"
             body['errors'].each do |error| 
