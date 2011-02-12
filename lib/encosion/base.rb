@@ -41,6 +41,7 @@ module Encosion
         options = extract_options(args)
         case args.first
         when :all   then find_all(options)
+        when :count then find_count(options)
         else        find_from_ids(args,options)
         end
       end

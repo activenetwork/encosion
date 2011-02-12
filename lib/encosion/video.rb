@@ -181,6 +181,12 @@ module Encosion
           return response['items'].collect { |item| self.parse(item) }
         end
         
+        # Find total # of items in a find-all query
+        def find_count(options)
+          response = read('find_all_videos', options.merge({:get_item_count => true, :page_size => 10, :page_number => 0}))
+          return response['total_count'].to_i
+        end
+        
       
         # Creates a new Video object from a Ruby hash (used to create a video from a parsed API call)
         def parse(obj)
