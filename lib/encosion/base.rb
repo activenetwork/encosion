@@ -66,7 +66,7 @@ module Encosion
         response = http.get(url, query_string)
         
         # Tyler add - remove weird control characters (wtf, Brightcove?)
-        body = response.body.content.strip == 'null' ? nil : JSON.parse(response.body.content.strip.gsub("\003", "").gsub("\001", ""))   # if the call returns 'null' then there were no valid results
+        body = response.content.strip == 'null' ? nil : JSON.parse(response.content.strip.gsub("\003", "").gsub("\001", ""))   # if the call returns 'null' then there were no valid results
         header = response.header
         
         error_check(header,body)
@@ -89,7 +89,7 @@ module Encosion
 
         response = http.post(url, content)
         # get the header and body for error checking
-        body = JSON.parse(response.body.content.strip)
+        body = JSON.parse(response.content.strip)
         header = response.header
 
         error_check(header,body)
